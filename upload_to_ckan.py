@@ -3,7 +3,7 @@
 
 # # IMPORT LIBRARY
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -14,7 +14,7 @@ from datetime import datetime
 
 # # CREATE PACKAGE (FUNCTION)
 
-# In[ ]:
+# In[2]:
 
 
 def sendMetaToCkan(url_ckan, api_key, ckan_meta):
@@ -31,7 +31,7 @@ def sendMetaToCkan(url_ckan, api_key, ckan_meta):
 
 # # UPLOAD TO CKAN (FUNCTION)
 
-# In[ ]:
+# In[3]:
 
 
 def uploadFileToCkan(url_ckan, api_key, file_meta, path_input):
@@ -47,13 +47,13 @@ def uploadFileToCkan(url_ckan, api_key, file_meta, path_input):
 
 # # SCRAP DATA
 
-# In[ ]:
+# In[10]:
 
 
 url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQlEs3FxFPwm-dpvU1YdsfRgsbfT9WdiXJHZm9kJgGTziPnk-y3TWtftbSbxj6Fe_g0NxYgqyVHTVU5/pubhtml?gid=1397577608&amp;single=true&amp;widget=true&amp;headers=false'
 
 
-# In[ ]:
+# In[11]:
 
 
 df = pd.read_html(url)[0]
@@ -66,7 +66,7 @@ df.to_csv("df.csv", index = False)
 
 # # CKAN METADATA
 
-# In[ ]:
+# In[7]:
 
 
 ckan_meta = json.load(open('metadata.json', encoding="utf8"))
@@ -74,7 +74,7 @@ ckan_meta = json.load(open('metadata.json', encoding="utf8"))
 
 # # CKAN API AND TOKEN
 
-# In[ ]:
+# In[8]:
 
 
 url_ckan = os.getenv("CKAN_URL","https://ckan.data.storemesh.com" )
@@ -96,4 +96,10 @@ file_meta = {
 path_input = './df.csv'
 # sendMetaToCkan(url_ckan, api_key, ckan_meta)
 uploadFileToCkan(url_ckan, api_key, file_meta, path_input)
+
+
+# In[ ]:
+
+
+
 
